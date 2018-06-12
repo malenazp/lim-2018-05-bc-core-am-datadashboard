@@ -76,9 +76,6 @@ transporte, o simplemente los indicadores clave de tu propio emprendimiento ;)
 El objetivo principal de este proyecto es que aprendas a diseñar y construir una
 _interfaz web_ donde podamos visualizar y manipular data.
 
-Esperamos que puedas pensar en el usuario, entender cuál es la mejor manera de visualizar la data según sus necesidades, y plasmar todo eso en tu diseño
-en la web.
-
 Además, este proyecto se debe "resolver" en parejas, por lo que un objetivo
 importante es ganar experiencia en trabajos colaborativos con entrega grupal.
 
@@ -91,20 +88,6 @@ Además, reforzarás lo aprendido en el proyecto anterior: _valores, tipos,
 variables_, _control de flujo_ y _tests unitarios_.
 
 ## Consideraciones generales
-
-La lógica del proyecto debe estar implementada completamente en JavaScript
-(ES6), HTML y CSS. En este proyecto NO está permitido usar librerías o
-frameworks, solo [vanilla JavaScript](https://medium.com/laboratoria-how-to/vanillajs-vs-jquery-31e623bbd46e).
-
-No se debe utilizar la _pseudo-variable_ `this`.
-
-Los tests unitarios deben cubrir un mínimo del 70% de _statements_, _functions_
-y _lines_, y un mínimo del 50% de _branches_. El _boilerplate_ ya contiene el
-setup y configuración necesaria para ejecutar los tests (pruebas) usando el
-comando `npm test`.
-
-Para comenzar tendrás que hacer un _fork_ y _clonar_ este repositorio que
-contiene el _boilerplate_.
 
 El _boilerplate_ contiene una estructura de archivos como punto de partida así
 como toda la configuración de dependencias y tests de ejemplo:
@@ -137,54 +120,110 @@ como toda la configuración de dependencias y tests de ejemplo:
 La carpeta `data/` dentro del _boilerplate_ incluye un extracto de la data que
 podemos usar tanto en los tests como en la interfaz en sí.
 
+
 ## Entregables
 
 Los criterios mínimos de aceptación para considerar que has completado este
-proyecto son:
+proyecto son: la Experiencia de Usuario; y los Detalles de la implementacion del código señalados en el proyecto.
 
-### User Experience Design
+`El Sprint Planing` <br>
+![Sprint Planing](http://subirimagen.me/uploads/20180611181855.jpg)
+
+
+## User Experience Design
+
+`Entrevista a los Usuarios`
+
+* Entrevista a Alejandra.
+![Entrevista a Alejandra](http://subirimagen.me/uploads/20180611160348.jpg)
+
+<br>
+
+* Entrevista a Gonzalo.
+![Entrevista a Gonzalo](http://subirimagen.me/uploads/20180611160513.jpg) 
+
 
 #### 1) Definición del producto
 
-En el `README.md` cuéntanos cómo pensaste y te acercaste a los usuarios al
-desarrollar tu producto (Tip: entrevistas) y cuál fue tu proceso para definir
-el producto final a nivel de experiencia y de interfaz. Es importante que
-detalles:
+Se realizaron entrevistas a los usuarios involucrados, con la finalidad de conocer las necesidades que ellos tenían, y los requerimientos que necesitaban implementarse en la plataforma web.
 
-* Quiénes son los principales usuarios de producto.
-* Cuáles son los objetivos de estos usuarios en relación con el producto.
-* Cuáles son los datos más relevantes que quieren ver en la interfaz y
-  por qué. Cómo los descubriste.
-* Cuándo revisan normalmente estos datos los usuarios.
-* Cómo crees que el producto les está resolviendo sus problemas.
-* Cómo fue tu proceso de diseño.
+Para la entrevista, se preparó una lista de preguntas, y a su vez se diseñó 2 prototipos básicos, para que los usuarios escogieran 1 modelo, adaptandolo siempre a las necesidades del mismo usuario.
+
+`Preguntas realizadas:`
+
+1. **Te gustaría tener un usuario y contraseña para logerarte.**
+   - Sí, me gustaría seguir utilizando mi actual usuario y contraseña.
+
+2. **Te gustaría un diseño de páginas planas, o lleno de colores.**
+   - Plano, con los colores característicos de Laboratoria.
+
+3. **Para hacer los filtros del formulario, ¿Te gustaría usar opciones desplegables o hacer click en botones?**
+   - Prefiero las listas desplegables.
+
+4. **¿Qué datos principalmente te gustaría visualizar en el Dashboard?** 
+   - Me gustaría visualizar el nivel alcanzado por las estudiantes, el porcentaje de lecturas completadas, los tiempos promedios de cada lectura. 
+
+5. **¿Qué gráficos te gustaría utilizar?**  
+   - Eso es depende de los datos que muestre el formulario. Para los datos del nivel alcanzado por las estudiantes, "Gráfico de Barras"; para mostrar el porcentaje de lecturas completadas, el gráfico adecuado sería el "Gráfico de torta", y "Gráfico de líneas" para mostrar los tiempos promedios de las lecturas.
+
+6. **¿Quisieras visualizar a todo el grupo de alumnas, una vez filtrado el cohort? Es decir, ¿debería haber una opción que te ayude a visualizar a las estudiantes?**
+   - Sí, por supuesto.
+
+7. **¿Te gustaría poder visualizar el porcentaje de alumnas, cursos, y relacionarlo con los resultados de las otras regiones?**
+   - Me sería mejor, ver los resultados, según la sede que selecciono.
+
+8. **¿Qué parte consideras más crucial referente a la información que deseas visualizar?** 
+   - Que el formulario sea simple, y fácil de utilizarlo. Que me muestre los datos de forma ordenada, que me sea comprensible.
+
+9. **Te gustaría tener un resumen con los datos más destacados de las estudiantes. Por ejemplo: ver el curso más estudiado por las estudiantes, ver el curso con mayor puntaje en los quizzes, visualizar la estudiante con mayor completitud de lecturas, ver la sede con más alumnado, ver la sede con el puntaje más alto obtenido por las estudiantes, entre otras.**
+   - Esa información, es interesante, pero me parece que lo deberían considerar en el Haking Edition, por el momento concentrense en un diseño básico.
+
+10. **Muchas Gracias.**
+
+<br>
+
+
+`Alcance del Producto`
+
+* Principales usuarios de producto: Los Training Managers.
+
+* Objetivos de los usuarios en relación con el producto: es poder visualizar y manipular los datos obtenidos del lms. Con el fin de que estos datos se puedan mostrar en gráficos estadísticos y los ayude en la toma de decisiones.
+
+* Cuáles son los datos más relevantes que quieren ver en la interfaz y por qué. Cómo los descubriste. <br>
+En las entrevistas realizadas nos dimos cuenta de que el % de lecturas completadas es sumamente importante en la interfaz, porque en base a este dato podemos comparar el nivel obtenido por los estudiantes y al mismo tiempo podremos conocer los cursos más leidos por las estudiantes.
+
+* Cuándo revisan normalmente estos datos los usuarios: Los training managers podrán visualizar estos datos de forma simultanea, en cualquier momento.
+
+* Cómo crees que el producto les está resolviendo sus problemas: El producto que presentamos les facilita de forma gráfica la visualización de los datos. Esto hace que la información leída sea fácil de comprender. Por lo tanto facilita la toma de decisiones.
+
+* Cómo fue tu proceso de diseño: Al principio tuvimos 2 prototipos, los cuales fueron presentados en las entrevistas realizadas. 
+
+  - El primer prototipo constaba de muchas ventanas, mientras que el segundo lo hicimos fácil y práctico. Los usuarios entrevistados escogieron el 2° prototipo. Este último fue el cual implementamos segun las necesidades que los usuarios nos señalaron.
 
 #### 2) Sketch de la solución (prototipo de baja fidelidad)
 
-Debes hacer un _sketch_ (boceto) de tu solución usando papel y lápiz, tomarle
-una foto, subirla a tu repositorio y hacer mención del _sketch_ en tu `README.md`.
+Diseño del Primer Prototipo: <br>
+![Prototipo 1](http://subirimagen.me/uploads/20180612083805.png)
+
+![Prototipo 1](http://subirimagen.me/uploads/20180611174408.png)
+
+<br>
+
+Diseño del Segundo Prototipo: <br>
+![Prototipo 2](http://subirimagen.me/uploads/20180611174451.png)
+
+
+
 
 #### 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
 
-Lo siguiente es diseñar tu Interfaz de Usuario (UI por sus siglas en inglés).
-Para eso debes aprender a utilizar alguna herramienta de diseño visual.
-Nosotros te recomendamos [Figma](https://www.figma.com/) que  es una herramienta
-que funciona en el navegador y, además, puedes crear una cuenta gratis. Sin
-embargo, eres libre de utilizar otros editores gráficos como
-Illustrator, Photoshop, PowerPoint, Keynote, etc.
+Prototipo Final realizado en [Figma](https://www.figma.com/), una herramienta fácil de utilizar, y sirve para el diseño de prototipos de páginas webs.
 
-El diseño debe representar tu _ideal_ de solución. Digamos que es lo que
-desearías implementar si tuvieras tiempo ilimitado para hackear.
+Diseño del Prototipo Final: <br>
+![Prototipo Final](http://subirimagen.me/uploads/20180611174451.png)
 
-Tu diseño debe seguir los fundamentos de _visual design_, como:
-contraste, alineación, jerarquía, entre otros. Tip: revisa el contenido de UX
-de la unidad de visual design.
 
 ### Implementación de la Interfaz de Usuario (HTML/CSS/JS)
-
-Luego de diseñar tu interfaz de usuario deberás trabajar en su implementación.
-Como mencionamos, **no** es necesario que construyas la interfaz tal como la
-diseñaste. Tendrás un tiempo limitado para hackear, así es que deberás priorizar.
 
 Como mínimo, tu implementación debe:
 
@@ -206,6 +245,8 @@ Como mínimo, tu implementación debe:
 Es importante que tu interfaz, a pesar de ser una versión mínima de tu ideal,
 igual debe seguir los fundamentos de visual design, como: contraste,
 alineación, jerarquía, entre otros.
+
+<br>
 
 ## Detalles de Implementación
 
