@@ -11,6 +11,7 @@ xhrUsers.send();
 console.log(xhrUsers);
 document.getElementById("demo").innerHTML = xhrUsers;
 
+
 //Llamando json progress
 let xhrProgress = new XMLHttpRequest();
 xhrProgress.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/progress.json");
@@ -23,6 +24,7 @@ xhrProgress.onload = function () {
 xhrProgress.send();
 console.log(xhrProgress);
 document.getElementById("demo").innerHTML = xhrProgress;
+
 
 //Llamando json cohorts
 let xhrCohorts = new XMLHttpRequest();
