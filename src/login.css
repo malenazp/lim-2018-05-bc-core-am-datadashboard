@@ -1,0 +1,63 @@
+form {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 5px;
+}
+
+form>p {
+    font-size: 15px;
+    text-align: center;
+}
+
+#login {
+    background-color: rgb(255, 255, 255);
+    display: block;
+    border: solid 3px rgb(172, 171, 171);
+    height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 170px;
+    width: 370px;
+}
+
+#logo {
+    margin-top: 35px;
+    height: 80px;
+    margin-left: 75px;
+    width: 200px;
+}
+
+input {
+    font-size: 15px;
+    height: 30px;
+    text-align: left;
+    outline: none;
+    margin: 5px;
+    width: 245px;
+}
+
+.box {
+    display: block;
+    height: 40px;
+    padding: 5px 55px 5px 55px;}
+
+.button-login {
+    background-color: rgba(248, 226, 27, 0.863);
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    height: 30px;
+    margin: 5px 0px 0px 5px;
+    width: 100px;
+}
+
+.button-login:hover {
+    background-color: rgb(238, 185, 10);
+}
+
+#forgot {
+    margin: 100px 50px 50px 55px;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: rgba(248, 206, 17, 0.884);
+  }
