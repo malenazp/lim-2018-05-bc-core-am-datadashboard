@@ -6,12 +6,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Data Dashboard</title>
+    <link rel="stylesheet" href="STYLE.css" />
 </head>
 
 <body>
-    <p id="demo">Probando llamada Json</p>
+
+    <header>
+
+        <img src="img/RGB/Laboratoria_RGB_logo-03.png" id=imgLogo>
+    </header>
+
+
+    <main>
+        <nav>
+            <p>Filtrar según las listas desplegables: </p>
+            <div class: "select">
+                <form>
+                    <!-- Este formulario muestra las listas desplegables-->
+
+                    <select name="city">
+                        <option value="value1" selected>Lima</option>
+                        <option value="value2">Arequipa</option>
+                        <option value="value3">MexicoDC</option>
+                        <option value="value4">Guadalajara</option>
+                        <option value="value5">SaoPaulo</option>
+                        <option value="value6">Santiago de Chile</option>
+                    </select>
+
+                    <select name="cohort">
+                        <option value="value1" selected>SELECCIÓN</option>
+                        <option value="value2">COMMON CORE</option>
+                        <option value="value3">UX</option>
+                        <option value="value4">FRONT-END</option>
+                    </select>
+
+                    <select name="year">
+                        <option value="value1" selected>2018-I</option>
+                        <option value="value1">2018-II</option>
+                        <option value="value2">2017-I</option>
+                        <option value="value2">2017-II</option>
+                        <option value="value3">2016-I</option>
+                        <option value="value3">2016-II</option>
+                        <option value="value4">2015-I</option>
+                        <option value="value3">2015-II</option>
+                    </select>
+
+                    <select name="turn">
+                        <option value="value1" selected>AM</option>
+                        <option value="value2">PM</option>
+                    </select>
+                </form>
+            </div>
+            <div class: "radiobuton">
+                <form>
+                    <br>
+                    <fieldset>
+                        <legend>Qué deseas visualizar</legend>
+                        <br>
+                        <label>
+                            <input type="radio" value="alumnas" name="tipo"> alumnas
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" value="cursos" name="tipo"> cursos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" value="dashboard" name="tipo"> dashboard
+                            <br>
+                        </label>
+                    </fieldset>
+                    <br>
+                    <input type="button" value="Ver lista de Cohorts" id="ver-cohorts">
+                    <ul id="vineta"> </ul>
+                </form>
+            </div>
+            <div>
+               
+            </div>
+        </nav>
+
+
+
+        <aside id="izquierda">
+
+            <figure>
+                <img src="img/Graficos/img1.png" class="img-graficos"> </figure>
+            <figure>
+                <img src="img/Graficos/img2.png" class="img-graficos"> </figure>
+            <figure>
+                <img src="img/Graficos/img3.png" class="img-graficos"> </figure>
+            <figure>
+                <img src="img/Graficos/img4.png" class="img-graficos"> </figure>
+            <figure>
+                <img src="img/Graficos/img5.png" class="img-graficos"> </figure>
+        </aside>
+    </main>
+
+    <footer>
+        <p>Copyright © Grecia Gutiérrez & Malena Zúñiga </p>
+
+    </footer>
+
     <script src="data.js"></script>
-    <script src="main.js"></script>
+    <script src="main.js"></script> 
+    
 </body>
 
 </html>

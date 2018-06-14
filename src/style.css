@@ -1,0 +1,101 @@
+body{
+    background:#FFE521; 
+}
+
+header
+{
+width: 90%;
+height: auto;
+background-color:#ffffff;
+margin:auto;
+border: #000000 1px solid;
+} 
+
+#imgLogo{
+  width: 30%;
+  height: auto;
+  }
+
+main
+{
+width: 90%;
+height: 2500px;
+/* height: auto; */
+background-color:#ffffff;
+margin:auto;
+position: relative;
+border: #000000 1px solid;
+}   
+
+nav
+{
+width: 20%;
+height: 2500px;
+background-color:#ffffff;
+position: absolute;
+border: #000000 1px solid;
+}
+
+
+select {
+width: 100%;
+margin-bottom: 20px;
+padding: 7px;
+box-sizing: border-box;
+font-size: 13px;
+border: black 2px;
+} 
+
+
+form
+{
+width:80%;
+margin: auto;  /* para centrar el formulario */    
+background: #FFE521; 
+padding: 10px 20px;  
+box-sizing: border-box;    
+margin-top: 20px;
+border-radius: 7px;  /* ESQUINAS REDONDAS */
+}
+
+
+.radiobuton {
+width: 80%;
+margin: 1em auto;
+padding: 1em 5%;
+background: #fff;
+padding: 7px;
+box-sizing: border-box;
+font-size: 17px;
+border: none;
+}
+
+ aside#izquierda
+{
+width: 70%;  
+/* height: 600px; */
+background-color:white;
+float:right;
+text-align: center;
+/* border: #000000 3px solid; */
+}
+
+.img-graficos{
+  width: 700px;
+  height: auto;
+  border: solid 3px black;
+}
+
+
+footer
+{
+ width: 90%;
+height: 40px;
+background-color: #ffffff;
+margin: auto;
+border: #000000 1px solid;
+}
+
+p{
+  text-align:center;
+}
