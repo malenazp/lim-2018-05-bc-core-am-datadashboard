@@ -1,6 +1,6 @@
 // //Llamando json users
 // let xhrUsers = new XMLHttpRequest();
-// xhrUsers.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/users.json");
+// xhrUsers.open("GET", "../data/cohorts/lim-2018-03-pre-core-pw/users.json");
 // xhrUsers.onload = function () {
 //   if (xhrUsers.status >= 200 && xhrUsers.status < 400) {// Success!
 //     let data = JSON.parse(xhrUsers.responseText);
@@ -17,7 +17,7 @@
 
 // //Llamando json progress
 // let xhrProgress = new XMLHttpRequest();
-// xhrProgress.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/progress.json");
+// xhrProgress.open("GET", "../data/cohorts/lim-2018-03-pre-core-pw/progress.json");
 // xhrProgress.onload = function () {
 //   if (xhrProgress.status >= 200 && xhrProgress.status < 400) {
 //     let data = JSON.parse(xhrProgress.responseText);
@@ -30,11 +30,11 @@
 
 
 
-document.getElementById('ver-cohorts').addEventListener("click", listaCohorts);
+
 
 function listaCohorts (){
 const xhrCohorts = new XMLHttpRequest();
-xhrCohorts.open("GET", "/data/cohorts.json");
+xhrCohorts.open("GET", "../data/cohorts.json");
 xhrCohorts.onload = function () {
   if (xhrCohorts.status >= 200 && xhrCohorts.status < 400) {
     let data = JSON.parse(xhrCohorts.responseText);
@@ -47,5 +47,7 @@ xhrCohorts.onload = function () {
   }};
 xhrCohorts.send();
 }
+
+document.getElementById('ver-cohorts').addEventListener("click", listaCohorts);
 
 
