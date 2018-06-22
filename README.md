@@ -214,10 +214,18 @@ Diseño del Segundo Prototipo: <br>
 
 
 
+Diseño del Prototipo 3:
+[Ver Prototipo 3](https://www.figma.com/file/eMd4F8M53y2I6dA1kikqxfMU/demo1?node-id=0%3A1)
+
+<br>
+<br>
 
 #### 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
 
-Prototipo Final realizado en [Figma](https://www.figma.com/), una herramienta fácil de utilizar, y sirve para el diseño de prototipos de páginas webs.
+Prototipo Final realizado en 
+[Ver Prototipo 3](https://www.figma.com/file/eMd4F8M53y2I6dA1kikqxfMU/demo1?node-id=0%3A1)
+
+[Figma](https://www.figma.com/), una herramienta fácil de utilizar, y sirve para el diseño de prototipos de páginas webs.
 
 Diseño del Prototipo Final: <br>
 ![Prototipo Final](http://subirimagen.me/uploads/20180611174451.png)
