@@ -76,9 +76,6 @@ transporte, o simplemente los indicadores clave de tu propio emprendimiento ;)
 El objetivo principal de este proyecto es que aprendas a diseñar y construir una
 _interfaz web_ donde podamos visualizar y manipular data.
 
-Además, este proyecto se debe "resolver" en parejas, por lo que un objetivo
-importante es ganar experiencia en trabajos colaborativos con entrega grupal.
-
 ## Tópicos a cubrir
 
 Tendrás que familiarizarte con conceptos como:
@@ -143,7 +140,6 @@ proyecto son: la Experiencia de Usuario; y los Detalles de la implementacion del
 ![Entrevista a Gonzalo](http://subirimagen.me/uploads/20180611160513.jpg) 
 
 
-#### 1) Definición del producto
 
 Se realizaron entrevistas a los usuarios involucrados, con la finalidad de conocer las necesidades que ellos tenían, y los requerimientos que necesitaban implementarse en la plataforma web.
 
@@ -164,7 +160,7 @@ Para la entrevista, se preparó una lista de preguntas, y a su vez se diseñó 2
    - Me gustaría visualizar el nivel alcanzado por las estudiantes, el porcentaje de lecturas completadas, los tiempos promedios de cada lectura. 
 
 5. **¿Qué gráficos te gustaría utilizar?**  
-   - Eso es depende de los datos que muestre el formulario. Para los datos del nivel alcanzado por las estudiantes, "Gráfico de Barras"; para mostrar el porcentaje de lecturas completadas, el gráfico adecuado sería el "Gráfico de torta", y "Gráfico de líneas" para mostrar los tiempos promedios de las lecturas.
+   - Eso es depende de los datos que muestre el formulario. Para los datos del nivel alcanzado por las estudiantes, "Gráfico de Barras"; para mostrar el porcentaje de lecturas completadas, el gráfico adecuado sería el "Gráfico de torta"; y "Gráfico de líneas" para mostrar los tiempos promedios de las lecturas.
 
 6. **¿Quisieras visualizar a todo el grupo de alumnas, una vez filtrado el cohort? Es decir, ¿debería haber una opción que te ayude a visualizar a las estudiantes?**
    - Sí, por supuesto.
@@ -182,12 +178,11 @@ Para la entrevista, se preparó una lista de preguntas, y a su vez se diseñó 2
 
 <br>
 
+#### 1) Definición del producto
 
-`Alcance del Producto`
+* Los principales usuarios de producto son: Los Training Managers.
 
-* Principales usuarios de producto: Los Training Managers.
-
-* Objetivos de los usuarios en relación con el producto: es poder visualizar y manipular los datos obtenidos del lms. Con el fin de que estos datos se puedan mostrar en gráficos estadísticos y los ayude en la toma de decisiones.
+* Objetivos de los usuarios en relación con el producto: es poder visualizar y manipular los datos obtenidos del LMS. Con el fin de que estos datos se puedan mostrar en gráficos estadísticos y los ayude en la toma de decisiones.
 
 * Cuáles son los datos más relevantes que quieren ver en la interfaz y por qué. Cómo los descubriste. <br>
 En las entrevistas realizadas nos dimos cuenta de que el % de lecturas completadas es sumamente importante en la interfaz, porque en base a este dato podemos comparar el nivel obtenido por los estudiantes y al mismo tiempo podremos conocer los cursos más leidos por las estudiantes.

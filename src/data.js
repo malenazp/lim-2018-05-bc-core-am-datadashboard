@@ -1,38 +1,33 @@
-
 window.computeUsersStats = (users, progress, courses) => {
-  //console.log(users, progress, courses);
-    let lista = users.map(userWhitStats => {
-    try {
-      userWhitStats.stats = {
-        percent: promedioCursos(progress[userWhitStats.id], courses),
+  let lista = users.map(
+    (user) => {
+      if (Object.keys(progress[user.id]).length === 0) {
+        return user
+      }
+      user.stats = {
+        percent: promedioCursos(progress[user.id], courses),
         exercises: {
-          total: totalExcercises(progress[userWhitStats.id], courses),
-          completed: completeExcercise(progress[userWhitStats.id], courses),
-          percent: (completeExcercise(progress[userWhitStats.id], courses) / totalExcercises(progress[userWhitStats.id], courses)) * 100,
+          total: totalExcercises(progress[user.id], courses),
+          completed: completeExcercise(progress[user.id], courses),
+          percent: (completeExcercise(progress[user.id], courses) / totalExcercises(progress[user.id], courses)) * 100 || 0, //puedo parsear una funcion?????
         },
         reads: {
-          total: totalReads(progress[userWhitStats.id], courses),
-          completed: completedReads(progress[userWhitStats.id], courses),
-          percent: (completedReads(progress[userWhitStats.id], courses) / totalReads(progress[userWhitStats.id], courses)) * 100,
+          total: totalReads(progress[user.id], courses),
+          completed: completedReads(progress[user.id], courses),
+          percent: Math.ceil((completedReads(progress[user.id], courses) / totalReads(progress[user.id], courses)) * 100) || 0,
         },
         quizzes: {
-          total: totalQuizzes(progress[userWhitStats.id], courses),
-          completed: completeQuizzes(progress[userWhitStats.id], courses),
-          percent: (completeQuizzes(progress[userWhitStats.id], courses) / totalQuizzes(progress[userWhitStats.id], courses)) * 100,
-          scoreSum: scoreSum(progress[userWhitStats.id], courses),
-          scoreAvg: (scoreSum(progress[userWhitStats.id], courses) / completeQuizzes(progress[userWhitStats.id], courses)),
-        }
-      }
-      return userWhitStats;
-    } catch (error) {
-     return {}; 
-    }
-      
+          total: totalQuizzes(progress[user.id], courses),
+          completed: completeQuizzes(progress[user.id], courses),
+          percent: Math.ceil((completeQuizzes(progress[user.id], courses) / totalQuizzes(progress[user.id], courses)) * 100) || 0,
+          scoreSum: scoreSum(progress[user.id], courses),
+          scoreAvg: Math.ceil((scoreSum(progress[user.id], courses) / completeQuizzes(progress[user.id], courses))) || 0,
+        }};
+      return user;
     })
-  console.log(lista);
-  return lista
+  return lista.filter((user) => user.hasOwnProperty("stats"));
 }
-
+//1) computeUsersStats(users, progress, courses)
 function promedioCursos(progress, courses) {
   let contador = 0;
   courses.forEach(curso => {
@@ -40,7 +35,8 @@ function promedioCursos(progress, courses) {
   });
   return contador / courses.length;
 }
-//funciones ejercicios, total por curso, completados por alumna y FALTA porcentaje de completados por alumna
+
+//funciones ejercicios, total por curso, completados por alumna 
 function totalExcercises(progress, courses) {
   let total = 0;
   courses.forEach(curso => {
@@ -62,7 +58,7 @@ function completeExcercise(progress, courses) {
       partes.forEach((parte) => {
         let completeExercices = Object.values(parte.exercises).filter(
           (exercise) => {
-            return exercise.completado === 1;
+            return exercise.completed === 1;
           })
         total += completeExercices.length;
       })
@@ -104,7 +100,7 @@ function totalQuizzes(progress, courses) {
       })
     }
   })
-  return total;
+  return Math.round(total);
 }
 
 function completeQuizzes(progress, courses) {
@@ -118,6 +114,7 @@ function completeQuizzes(progress, courses) {
   })
   return total;
 }
+
 //Suma de todas las puntuaciones (score) de los quizzes completados.
 function scoreSum(progress, courses) {
   let total = 0;
@@ -125,120 +122,132 @@ function scoreSum(progress, courses) {
     Object.values(progress[curso].units).forEach(unit => {
       let quizzes = Object.values(unit.parts).filter((part) => part.type === "quiz" && part.completed === 1)
       quizzes.forEach(quiz => {
-        total += quiz.score
-      })
-    })
-  })
-  return total
-}
-
-
-
-const courses = ["intro"];
-const getInfoData = () => {
-  fetch("../data/cohorts/lim-2018-03-pre-core-pw/users.json", { method: 'GET' })
-    .then((response) => {
-      if (response.status !== 200) {
-        alert('Error')
-      }
-      return response.json();
-    })
-    .then((users) => {
-      fetch("../data/cohorts/lim-2018-03-pre-core-pw/progress.json", { method: 'GET' })
-        .then((response) => {
-          if (response.status !== 200) {
-            alert('Error')
-          }
-          return response.json();
-        })
-        .then((progress) => {
-          computeUsersStats(users, progress, courses);
-        })
-    })
-};
-
-/////////////////////////////////////////////////////////////////////////////////////
-
-//Creando la lista de cohorts 
-const getListOfCohorts = () => {
-    fetch('../data/cohorts.json', { method: 'GET' })
-        .then((response) => {
-            if (response.status !== 200) {
-                alert('Error')
-            }
-            return response.json();
-        })
-        .then((responseCohorts) => {
-            responseCohorts.forEach(cohort => {
-                let nameOfCohort = document.createElement('option');
-                nameOfCohort.value = cohort.id;
-                nameOfCohort.innerText = cohort.id;
-                document.getElementById('selectCohorts').appendChild(nameOfCohort);
-            })
-        })
-}
-// Filtrando estudiantes por cohort
-const getUsersOfCohort = (nameOfCohort) => {
-    let arrayOfUsersOfOneCohort = [];
-    fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json', { method: 'GET' })
-        .then((response) => {
-            if (response.status !== 200) {
-                alert('Error')
-            }
-            return response.json();
-        })
-        .then((responseUsersOfCohort) => {
-            responseUsersOfCohort.forEach(user => {
-                if (user.signupCohort === nameOfCohort) {
-                    arrayOfUsersOfOneCohort.push(user);
-                }
-            });
-            paintUsersCohort(arrayOfUsersOfOneCohort);
-        })
-};
-// Pinta la ista de usuarias del cohort y le da un "enlace" hacia progress
-const paintUsersCohort = (arrayOfUsersOfOneCohort) => {
-  document.getElementById('listUsers').innerHTML = '';
-    arrayOfUsersOfOneCohort.forEach(user => {
-        let createElementLi = document.createElement('li');
-        let createElement_A = document.createElement('a');
-        createElement_A.innerHTML = user.name,
-            createElement_A.setAttribute('href', 'javascript;');
-        createElement_A.addEventListener('click', (e) => {
-            e.preventDefault();
-            getUsersProgress(user.id);
-        });
-        createElementLi.appendChild(createElement_A);
-        document.getElementById('listUsers').appendChild(createElementLi);
+        total += quiz.score;
+      });
     });
-}
-//Traer progreso
-const getUsersProgress = (idStudent) => {
-    fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json', { method: 'GET' })
-        .then((response) => {
-            if (response.status !== 200) {
-                alert('Error')
-            }
-            return response.json();
-        })
-        .then((progressStudents) => {
-            let progressUser = progressStudents[idStudent];
-            generateData(progressUser);
-        })
+  });
+  return total;
 };
+/*2) sortUsers(users, orderBy, orderDirection) ORDERBY ordenar por nombre, porcentaje de completitud total(percent),
+porcentaje de ejercicios autocorregidos completados(exercises percent), porcentaje de quizzes completados(quizzes percent), 
+puntuación promedio en quizzes completados(quizzes scoreavg), y porcentaje de lecturas completadas(reads percent).*/
+window.sortUsers = (users, orderBy, orderDirection) => {
+  let compareNames = (user1, user2) => {
+    if (user1.name < user2.name) {
+      return -1;
+    }
+    if (user1.name > user2.name) {
+      return 1;
+    } else return 0;
+  }
 
-const generateData = (progressUser) => {
-//Aquí debe ir la información de cada usuaria
+  let compareNamesDesc = (user1, user2) => -compareNames(user1, user2);
+
+  let comparePercent = (user1, user2) => {
+    if (user1.stats.percent < user2.stats.percent) {
+      return -1;
+    }
+    if (user1.stats.percent > user2.stats.percent) {
+      return 1;
+    } else return 0;
+  }
+  let comparePercentDesc = (user1, user2) => -comparePercent(user1, user2);
+
+  let compareExercisesPercent = (user1, user2) => {
+    if (user1.stats.exercises.percent < user2.stats.exercises.percent) {
+      return -1;
+    }
+    if (user1.stats.exercises.percent > user2.stats.exercises.percent) {
+      return 1;
+    } else return 0;
+  }
+  let compareExercisesPercentDesc = (user1, user2) => -compareExercisesPercent(user1, user2);
+
+  let compareQuizzesPercent = (user1, user2) => {
+    if (user1.stats.quizzes.percent < user2.stats.quizzes.percent) {
+      return -1;
+    }
+    if (user1.stats.quizzes.percent > user2.stats.quizzes.percent) {
+      return 1;
+    } else return 0;
+  }
+  let compareQuizzesPercentDesc = (user1, user2) => -compareQuizzesPercent(user1, user2);
+
+  let compareQuizzesScoreAvg = (user1, user2) => {
+    if (user1.stats.quizzes.scoreAvg < user2.stats.quizzes.scoreAvg) {
+      return -1;
+    }
+    if (user1.stats.quizzes.scoreAvg > user2.stats.quizzes.scoreAvg) {
+      return 1;
+    } else return 0;
+  }
+  let compareQuizzesScoreAvgDesc = (user1, user2) => -compareQuizzesScoreAvg(user1, user2);
+
+  let compareReadsPercent = (user1, user2) => {
+    if (user1.stats.reads.percent < user2.stats.reads.percent) {
+      return -1;
+    }
+    if (user1.stats.reads.percent > user2.stats.reads.percent) {
+      return 1;
+    } else return 0;
+  }
+  let compareReadsPercentDesc = (user1, user2) => -compareReadsPercent(user1, user2);
+
+
+  if (orderBy === "name") {
+    if (orderDirection === "ASC") {
+      users.sort(compareNames)
+    } else users.sort(compareNamesDesc)
+  }
+
+  if (orderBy === "percent") {
+    if (orderDirection === "ASC") {
+      users.sort(comparePercent)
+    } else users.sort(comparePercentDesc)
+  }
+  if (orderBy === "exercises percent") {
+    if (orderDirection === "ASC") {
+      users.sort(compareExercisesPercent)
+    } else user.sort(compareExercisesPercentDesc)
+  }
+  if (orderBy === "quizzes percent") {
+    if (orderDirection === "ASC") {
+      users.sort(compareQuizzesPercent)
+    } else users.sort(compareQuizzesPercentDesc)
+  }
+  if (orderBy === "quizzes scoreAvg") {
+    if (orderDirection === "ASC") {
+      users.sort(compareQuizzesScoreAvg)
+    } else users.sort(compareQuizzesScoreAvgDesc)
+  }
+  if (orderBy === "reads percent") {
+    if (orderDirection === "ASC") {
+      users.sort(compareReadsPercent)
+    } else users.sort(compareReadsPercentDesc)
+  }
+  return users;
 };
+//3) filterUsers(users, search)
+window.filterUsers = (users, search) => {
+  let filterName = users.filter((user) => user.name.includes(search))
+  return filterName;
+};
+//4) processCohortData(options)
+/* windows.processCohortData = (options) => {
+  options = {
+      cohort: cohorts,
+      cohortData: {
+          users: cohortUsers,
+          progress: Objeto con data de progreso de cada usuario en el contexto de un cohort en particular.
+          orderBy: String con criterio de ordenado(ver sortUsers).
+          orderDirection: String con dirección de ordenado(ver sortUsers).
+          search: String de búsqueda(ver filterUsers)
+      }
+      } valor de retorno
 
-const createContainerForScore = (scoreForStudent) => {
-  document.getElementById('listProgress').innerHTML = "";
-    let createElement_Li = document.createElement('li');
-    createElement_Li.innerText = scoreForStudent;
-    let createElementP = document.createElement('p');
-    createElementP.innerText = "Porcentaje de completidud de todos los cursos";
-    document.getElementById('listProgress').appendChild(createElementP);
-    document.getElementById('listProgress').appendChild(createElement_Li);
+   Nuevo arreglo de usuarios ordenado y filtrado con la propiedad stats añadida(ver computeUsersStats).
+  }
+}*/
 
-}
+/////////////////////////////////////////////////////////////
 

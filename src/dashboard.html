@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Malena Zuñiga - Grecia Gutierrez">
+    <meta name="keywords" content="data dashboard, graficos estaditicos, alumnas de laboratoria, estudiantes de laboratoria, notas, examenes">
+    <meta name="description" content="Este proyecto consiste en la manipulacion de datos extraidos de diferentes archivos JSON, con la finalidad de mostrar datos estadísticos relevantes para los Training Managers">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="img/Laboratoria_CMYK_logo-11.png" type="image/x-icon">
     <title>Data Dashboard</title>
@@ -13,51 +17,70 @@
 <body>
 
     <header>
-        <a href="dashboard.html">
-            <img src="img/RGB/Laboratoria_RGB_logo-03.png" id=imgLogo> </a>
+        <table>
+            <td>
+                <a href="dashboard.html">
+                    <img src="img/RGB/Laboratoria_RGB_logo-03.png" id="imgLogo"> </a>
+            </td>
+
+            <td id="view-principal2" class="hide">
+                <img src="img/boton-volver.png" class="img-volver" id="view-principal">
+            </td>
+        </table>
     </header>
 
 
     <main>
         <nav>
-
-            <div class: "radiobuton">
-                <form>
+            <form>
+                <div class="section-sede">
+                    <p>
+                        <b>Opciones para navegar</b>
+                    </p>
                     <br>
-                    <fieldset>
-                        <legend>Qué deseas visualizar</legend>
-                        <br>
-                        <label>
-                            <a href="datadashboardStudents.html">
-                                <input type="radio" value="alumnas" name="tipo" id="view-students"> alumnas
-                            </a>
-                            <br>
-                        </label>
-                        <label>
-                            <a href="datadashboardCourses.html">
-                                <input type="radio" value="cursos" name="tipo" id="view-courses"> cursos
-                            </a>
-                            <br>
-                        </label>
-                        <label>
-                            <a href="datadashboardGraphs.html">
-                                <input type="radio" value="dashboard" name="tipo" id="view-graphs"> dashboard
-                            </a>
-                            <br>
-                        </label>
-                    </fieldset>
-                    <br>
-                    <!-- <input type="button" value="Ver lista de Cohorts" id="ver-cohorts">
-                            <ul id="vineta"> </ul> -->
-                </form>
-            </div>
+                    <ul class="navigatingBar" id="navigatingBar">
 
 
-            <p>Filtrar según las listas desplegables: </p>
-            <div class: "select">
+                        <li class="place about" id="newTab">
+                            About
+                        </li>
+                        <li class="place mision" id="li-mision">
+                            Misión
+                        </li>
+                        <li class="place vision" id="li-vision">
+                            Visión
+                        </li>
+                        <li class="place objetivos" id="li-objetivos">
+                            Objetivos
+                        </li>
+                        <li class="place empresas" id="li-empresas">
+                            Empresas
+                        </li>
+                        <li class="place contactanos show" id="li-contactanos">
+                            Contactanos
+                        </li>
+                    </ul>
+                    </div>
+            </form>
+
+
+            <form>
+                <p>
+                    <b>Qué deseas visualizar</b>
+                </p>
+                <br>
+                <input type="button" class="input-botones" value="Estudiantes" id="view-students">
+                <input type="button" class="input-botones" value="Cursos" id="view-courses">
+                <input type="button" class="input-botones" value="Dashboard" id="view-graphs">
+            </form>
+
+
+            <div class="select">
                 <form>
                     <!-- Este formulario muestra las listas desplegables-->
-
+                    <p>
+                        <b>Filtrar según las listas desplegables:</b>
+                    </p>
                     <select name="city">
                         <option value="value1" selected>Sede:</option>
                         <option value="value2">Lima</option>
@@ -68,67 +91,162 @@
                         <option value="value7">Santiago de Chile</option>
                     </select>
 
-
-                    <select name="year">
-                        <option value="value0" selected>Año:</option>
-                        <option value="value1">2018-I</option>
-                        <option value="value1">2018-II</option>
-                        <option value="value2">2017-I</option>
-                        <option value="value2">2017-II</option>
-                        <option value="value3">2016-I</option>
-                        <option value="value3">2016-II</option>
-                        <option value="value4">2015-I</option>
-                        <option value="value3">2015-II</option>
-                    </select>
-
-                    <select id='selectCohorts'>Cohorts</select>
+                    <select id="selectCohorts">Cohorts</select>
                 </form>
             </div>
-
-
-            <form>
-                <div id="search-students">
-                    <p id="listStudents">Lista de estudiantes</p>
-                    <input type="button" value="Ver Datos" id="butonData">
-                </div>
-                <div>
-                    <ul class="listStudents" id="listUsers"></ul>
-                    <ul class="listProgress" id="listProgress"></ul>
-                </div>
-            </form>
 
         </nav>
 
 
+        <!-- ================================================================== -->
+        <!-- ==============================   BOTONES  ======================== -->
 
         <aside id="izquierda">
+            <div id="div-principal" class="div-principal show">
 
-            <figure>
-                <img src="img/Prototipo_De_Alta/pag1.PNG" class="img-pag1">
-            </figure>
-            <figure>
-                <img src="img/Prototipo_De_Alta/pag1_body.PNG" class="img-pag1">
-            </figure>
-            <!-- <figure>
-                <img src="img/Graficos/img1.png" class="img-graficos"> </figure>
-            <figure>
-                <img src="img/Graficos/img2.png" class="img-graficos"> </figure>
-            <figure>
-                <img src="img/Graficos/img3.png" class="img-graficos"> </figure>
-            <figure>
-                <img src="img/Graficos/img4.png" class="img-graficos"> </figure>
-            <figure>
-                <img src="img/Graficos/img5.png" class="img-graficos"> </figure> -->
+                <figure>
+                    <!-- <img src="img/Prototipo_De_Alta/pag1.PNG" class="img-pag1"> -->
+                    <img src="img/gif/1_portadaa.gif" class="img-pag1">
+                </figure>
+            </div>
+            <div id="div-menu" class="div-menu">
+                <div id="div-students" class="div-students hide">
+
+
+                    <!-- Selecciona Cohort LIMA ===========================-->
+                    <div class="col-3 col-sm-3 col-md-3 col-lg-3" id="sidebar">
+                        <ul class="list-unstyled components">
+                            <li>
+                                <a href="#Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                    <b>Ver Cohorts:</b>
+                                </a>
+                                <ul class="collapse list-unstyled" id="Submenu">
+                                    <li>
+                                        <a href="#" id="btn">Lima 2018 03 Pre core</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div id="target"></div>
+
+                        <div class="search">
+                            <form>
+                                <h1>Buscar por alumna</h1>
+                                <input class="form-control mr-sm-2" type="text" id="InputSearch" placeholder="Buscar">
+                            </form>
+                        </div>
+
+                    </div>
+                    <!-- ============================================== -->
+                    <div class="col-9 col-sm-9 col-md-9 col-lg-9" id="Cohorts">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12" id="superior">
+                                <h1>Estás en el Datadashboard de Laboratoria</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="cont">
+                                    <div class="studentdata">
+                                        <div class="studentlist">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="5" class="title">
+                                                            <h1>Lista de Alumnas del Cohort</h1>
+                                                        </th>
+                                                        <th>
+                                                            <select onchange="seleccion()">
+                                                                <option>Ordenar los resultados</option>
+                                                                <option id="nameord">Ordenar por Nombre (abc)</option>
+                                                                <option id="aveord">Avance General % (ASC)</option>
+                                                                <option id="btnejerCom">Ejercicios completados (ASC)</option>
+                                                                <option id="btnquizzes">Puntuación promedio en quizzes (ASC)</option>
+                                                                <option id="nameordDesc">Ordenar por Nombre (DESC)</option>
+                                                                <option id="aveordDesc">Avance General % (DESC)</option>
+
+                                                            </select>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="name">
+                                                            <h2>Nombre</h2>
+                                                        </td>
+                                                        <td class="percent">
+                                                            <h2>Avance general</h2>
+                                                        </td>
+                                                        <td class="exercisesCompleted">
+                                                            <h2>Ejercicios Completados</h2>
+                                                        </td>
+                                                        <td class="quizzesCompleted">
+                                                            <h2>Quizzes Completados</h2>
+                                                        </td>
+                                                        <td class="quizzesScoreAvg">
+                                                            <h2>Promedio puntuaciones de Quizzes</h2>
+                                                        </td>
+                                                        <td class="readsCompleted">
+                                                            <h2>Lecturas Completadas</h2>
+                                                        </td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="display">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="div-courses" class="div-courses hide">
+
+                    <img src="img/Prototipo_De_Alta/courses.PNG" class="img-pag1">
+                </div>
+                <div id="div-graphs" class="div-graphs hide">
+
+                    <img src="img/Graficos/img1.png" class="img-graficos">
+                    <img src="img/Graficos/img2.png" class="img-graficos">
+                    <img src="img/Graficos/img3.png" class="img-graficos">
+                    <img src="img/Graficos/img4.png" class="img-graficos">
+                    <img src="img/Graficos/img5.png" class="img-graficos">
+                </div>
+
+                <div id="div-about" class="div-about hide" >
+                    <img src="img/gif/about.gif" class="img-pag1">
+                </div>
+                <div id="div-mision" class="div-mision hide">
+                    <img src="img/gif/mision.PNG" class="img-pag1">
+                </div>
+                <div id="div-vision" class="div-vision hide">
+                    <img src="img/gif/vision.gif" class="img-pag1">
+                </div>
+                <div id="div-objetivos" class="div-objetivos hide">
+                    <img src="img/gif/propostion.PNG" class="img-pag1">
+                </div>
+                <div id="div-empresas" class="div-empresas hide">
+                    <img src="img/gif/empresas.PNG" class="img-pag1">
+                </div>
+                <div id="div-contactanos" class="div-contactanos hide">
+                    <img src="img/gif/Mapa_con_Logo.mp4" class="img-pag1">
+                </div>
+
+            </div>
         </aside>
     </main>
 
+    <!-- ======================================================== -->
+    <!-- =================== PIE DE PÁGINA ====================== -->
     <footer>
-        <p>Copyright © Grecia Gutiérrez & Malena Zúñiga </p>
+        <img src="img/gif/footer.PNG" class="img-pag1">
 
     </footer>
-
-    <script src="data.js"></script>
     <script src="main.js"></script>
+    <script src="data.js"></script>
+
 
 </body>
 
