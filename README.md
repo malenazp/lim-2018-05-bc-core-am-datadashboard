@@ -151,7 +151,9 @@ La interfaz presentada cumple con los requerimientos minimos de visual desing.
 
 ## Test Unitarios:
 
-![Prototipo Final](http://subirimagen.me/uploads/20180702084816.test)
+![Resultado del Test](src/img/test/test1.png)
+<br>
+![Resultado del Test](src/img/test/test2.jpg)
 
 
 ## Habilidades blandas
