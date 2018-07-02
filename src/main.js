@@ -3,11 +3,10 @@
 /* ================================================ */
 
 let prin = document.getElementById('div-principal');
-let prin2 = document.getElementById('view-principal2');
+let volver = document.getElementById('view-volver');
 let stud = document.getElementById('div-students');
 let cour = document.getElementById('div-courses');
 let grap = document.getElementById('div-graphs');
-let menu = document.getElementById('div-menu');
 
 let btnPrincipal = document.getElementById('view-principal');
 let btnCourses = document.getElementById('view-courses');
@@ -16,84 +15,161 @@ let btnGraphs = document.getElementById('view-graphs');
 
 
 //Evento click del boton ESTUDIANTES, CURSOS, GRAFICOS Y PRINCIPAL
-btnStudents.addEventListener('click', () => {
+btnStudents.addEventListener('click', () => {   
     prin.classList.replace('show', 'hide');
+    volver.classList.replace('hide', 'show');
     stud.classList.replace('hide', 'show');
-    prin2.classList.replace('hide', 'show');
-    document.form.btnStudents.disabled = false;
-    document.form.btnCourses.disabled = false;
-    document.form.btnGraphs.disabled = false;
+    cour.classList.replace('show', 'hide');
+    grap.classList.replace('show', 'hide');
+    divAbout.classList.replace('show', 'hide');
+    divVision.classList.replace('show', 'hide');
+    divMision.classList.replace('show', 'hide');
+    divObjetivos.classList.replace('show', 'hide');
+    divEmpresas.classList.replace('show', 'hide');
+    divContactanos.classList.replace('show', 'hide');
 });
 
 btnCourses.addEventListener('click', () => {
     prin.classList.replace('show', 'hide');
+    volver.classList.replace('hide', 'show');
+    stud.classList.replace('show', 'hide');
     cour.classList.replace('hide', 'show');
-    prin2.classList.replace('hide', 'show');
-    document.form.btnStudents.disabled = false;
-    document.form.btnCourses.disabled = false;
-    document.form.btnGraphs.disabled = false;
+    grap.classList.replace('show', 'hide');
+    divAbout.classList.replace('show', 'hide');
+    divVision.classList.replace('show', 'hide');
+    divMision.classList.replace('show', 'hide');
+    divObjetivos.classList.replace('show', 'hide');
+    divEmpresas.classList.replace('show', 'hide');
+    divContactanos.classList.replace('show', 'hide');
 });
 
 btnGraphs.addEventListener('click', () => {
     prin.classList.replace('show', 'hide');
+    volver.classList.replace('hide', 'show');
+    stud.classList.replace('show', 'hide');
+    cour.classList.replace('show', 'hide');
     grap.classList.replace('hide', 'show');
-    prin2.classList.replace('hide', 'show');
-    document.form.btnStudents.disabled = false;
-    document.form.btnCourses.disabled = false;
-    document.form.btnGraphs.disabled = false;
+    divAbout.classList.replace('show', 'hide');
+    divVision.classList.replace('show', 'hide');
+    divMision.classList.replace('show', 'hide');
+    divObjetivos.classList.replace('show', 'hide');
+    divEmpresas.classList.replace('show', 'hide');
+    divContactanos.classList.replace('show', 'hide');
 });
 
 btnPrincipal.addEventListener('click', () => {
     prin.classList.replace('hide', 'show');
+    volver.classList.replace('show', 'hide');
     stud.classList.replace('show', 'hide');
     cour.classList.replace('show', 'hide');
     grap.classList.replace('show', 'hide');
-    prin2.classList.replace('show', 'hide');
-    document.form.btnStudents.disabled = true;
-    document.form.btnCourses.disabled = true;
-    document.form.btnGraphs.disabled = true;
+    divAbout.classList.replace('show', 'hide');
+    divVision.classList.replace('show', 'hide');
+    divMision.classList.replace('show', 'hide');
+    divObjetivos.classList.replace('show', 'hide');
+    divEmpresas.classList.replace('show', 'hide');
+    divContactanos.classList.replace('show', 'hide');
 });
 
 /* ================================================ */
 /* ============== BOTONES DEL MENUUU ============== */
 /* ================================================ */
 // faltaaaaa
-// let menuAbout = document.getElementById('div-about');
-// let menuMision = document.getElementById('div-mision');
-// let menuVision = document.getElementById('div-vision');
-// let menuObjetivos = document.getElementById('div-objetivos');
-// let menuEmpresas = document.getElementById('div-empresas');
-// let menuContactanos = document.getElementById('div-contactanos');
 
-// menuAbout.addEventListener('click', () => {
-//   menuAbout.classList.replace('hide', 'show');
-//   menuMision.classList.replace('show', 'hide');
-//   menuVision.classList.replace('show', 'hide');
-//   menuObjetivos.classList.replace('show', 'hide');
-//   menuEmpresas.classList.replace('show', 'hide');
-//   menuContactanos.classList.replace('show', 'hide');
-//   prin.classList.replace('show', 'hide');
-//     stud.classList.replace('show', 'hide');
-//     cour.classList.replace('show', 'hide');
-//     grap.classList.replace('show', 'hide');
-//     prin2.classList.replace('show', 'hide');
-//   document.form.btnStudents.disabled = false;
-//   document.form.btnCourses.disabled = false;
-//   document.form.btnGraphs.disabled = false;
-// });
+let btnAbout = document.getElementById('newTab');
+let btnMision = document.getElementById('li-mision');
+let btnVision = document.getElementById('li-vision');
+let btnObjetivos = document.getElementById('li-objetivos');
+let btnEmpresas = document.getElementById('li-empresas');
+let btnContactanos = document.getElementById('li-contactanos');
 
-// menuVision.addEventListener('click', () => {
-//   menuVision.className.replace('hide', 'show');
-//   prin.classList.replace('show', 'hide');
-//   grap.classList.replace('show', 'hide');
-//   prin2.classList.replace('show', 'hide');
-//   document.form.btnStudents.disabled = false;
-//   document.form.btnCourses.disabled = false;
-//   document.form.btnGraphs.disabled = false;
-// });
+let divAbout = document.getElementById('div-about');
+let divMision = document.getElementById('div-mision');
+let divVision = document.getElementById('div-vision');
+let divObjetivos = document.getElementById('div-objetivos');
+let divEmpresas = document.getElementById('div-empresas');
+let divContactanos = document.getElementById('div-contactanos');
 
+//Evento click del boton About-Mision-Vision-Objetivos-Empresas-Contactanos
+btnAbout.addEventListener('click', () => {
+    divAbout.classList.replace('hide', 'show');
+    prin.classList.replace('show', 'hide');
+    volver.classList.replace('hide', 'show');
+    stud.classList.replace('show', 'hide');
+    cour.classList.replace('show', 'hide');
+    grap.classList.replace('show', 'hide');
+    divVision.classList.replace('show', 'hide');
+    divMision.classList.replace('show', 'hide');
+    divObjetivos.classList.replace('show', 'hide');
+    divEmpresas.classList.replace('show', 'hide');
+    divContactanos.classList.replace('show', 'hide');
+});
+btnMision.addEventListener('click', () => {
+    divAbout.classList.replace('show', 'hide');
+    prin.classList.replace('show', 'hide');
+    volver.classList.replace('hide', 'show');
+    stud.classList.replace('show', 'hide');
+    cour.classList.replace('show', 'hide');
+    grap.classList.replace('show', 'hide');
+    divVision.classList.replace('show', 'hide');
+    divMision.classList.replace('hide', 'show');
+    divObjetivos.classList.replace('show', 'hide');
+    divEmpresas.classList.replace('show', 'hide');
+    divContactanos.classList.replace('show', 'hide');
+});
+btnVision.addEventListener('click', () => {
+    divAbout.classList.replace('show', 'hide');
+    prin.classList.replace('show', 'hide');
+    volver.classList.replace('hide', 'show');
+    stud.classList.replace('show', 'hide');
+    cour.classList.replace('show', 'hide');
+    grap.classList.replace('show', 'hide');
+    divVision.classList.replace('hide', 'show');
+    divMision.classList.replace('show', 'hide');
+    divObjetivos.classList.replace('show', 'hide');
+    divEmpresas.classList.replace('show', 'hide');
+    divContactanos.classList.replace('show', 'hide');
+});
 
-
+btnObjetivos.addEventListener('click', () => {
+    divAbout.classList.replace('show', 'hide');
+    prin.classList.replace('show', 'hide');
+    volver.classList.replace('hide', 'show');
+    stud.classList.replace('show', 'hide');
+    cour.classList.replace('show', 'hide');
+    grap.classList.replace('show', 'hide');
+    divVision.classList.replace('show', 'hide');
+    divMision.classList.replace('show', 'hide');
+    divObjetivos.classList.replace('hide', 'show');
+    divEmpresas.classList.replace('show', 'hide');
+    divContactanos.classList.replace('show', 'hide');
+});
+btnEmpresas.addEventListener('click', () => {
+    divAbout.classList.replace('show', 'hide');
+    prin.classList.replace('show', 'hide');
+    volver.classList.replace('hide', 'show');
+    stud.classList.replace('show', 'hide');
+    cour.classList.replace('show', 'hide');
+    grap.classList.replace('show', 'hide');
+    divVision.classList.replace('show', 'hide');
+    divMision.classList.replace('show', 'hide');
+    divObjetivos.classList.replace('show', 'hide');
+    divEmpresas.classList.replace('hide', 'show');
+    divContactanos.classList.replace('show', 'hide');
+});
+btnContactanos.addEventListener('click', () => {
+    divAbout.classList.replace('show', 'hide');
+    prin.classList.replace('show', 'hide');
+    volver.classList.replace('hide', 'show');
+    stud.classList.replace('show', 'hide');
+    cour.classList.replace('show', 'hide');
+    grap.classList.replace('show', 'hide');
+    divVision.classList.replace('show', 'hide');
+    divMision.classList.replace('show', 'hide');
+    divObjetivos.classList.replace('show', 'hide');
+    divEmpresas.classList.replace('show', 'hide');
+    divContactanos.classList.replace('hide', 'show');
+});
 
 
 /* ================================================== */
