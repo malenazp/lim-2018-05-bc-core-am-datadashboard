@@ -187,7 +187,7 @@ let cohorts = {};
 let courses = [];
 let userByCohort = [];
 
-let loadUserJson = fetch("../../data/cohorts/lim-2018-03-pre-core-pw/users.json")
+let loadUserJson = fetch("../data/cohorts/lim-2018-03-pre-core-pw/users.json")
     .then(response => response.json())
     .then(data => {
         usersData = data;
@@ -198,7 +198,7 @@ let loadUserJson = fetch("../../data/cohorts/lim-2018-03-pre-core-pw/users.json"
         // console.error(err);
     })
 
-let loadProgressJson = fetch("../../data/cohorts/lim-2018-03-pre-core-pw/progress.json")
+let loadProgressJson = fetch("../data/cohorts/lim-2018-03-pre-core-pw/progress.json")
     .then(response => response.json())
     .then(data => {
         progressData = data;
@@ -207,7 +207,7 @@ let loadProgressJson = fetch("../../data/cohorts/lim-2018-03-pre-core-pw/progres
         // console.error(err);
     })
 
-let loadCohortsJson = fetch("../../data/cohorts.json")
+let loadCohortsJson = fetch("../data/cohorts.json")
     .then(response => response.json())
     .then(data => {
         data.forEach(
