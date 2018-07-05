@@ -171,6 +171,19 @@ btnContactanos.addEventListener('click', () => {
     divContactanos.classList.replace('hide', 'show');
 });
 
+/* ==========Declarando parámetro options=============== */
+
+let options = {
+    cohort: null,
+    cohortData: {
+      users: null,
+      progress: null,
+  
+    },
+    orderBy: 'name',
+    orderDirection: 'ASC',
+    search: ''
+  }
 
 /* ================================================== */
 /* ====Creando variables y conectando con JSON  ===== */
@@ -248,10 +261,10 @@ Promise.all([loadUserJson, loadProgressJson, loadCohortsJson]).then((values) => 
     userStats = window.computeUsersStats(usersData, progressData, cohortData["lim-2018-03-pre-core-pw"])
 });
 
-
 //Busqueda
 let inputText = document.getElementById("InputSearch");
-inputText.addEventListener("keypress", (event) => {
+inputText.addEventListener("keyup", (event) => {
+    event.preventDefault()
     let key = event.which || event.keyCode;
     if (key === 13) {
         let name = inputText.value;
@@ -286,42 +299,41 @@ botonCohort.addEventListener("click", (event) => {
 
 //selección ASC y DEC
 function seleccion() {
-    if (document.getElementById("nameord").selected == true) {
+    if (document.getElementById("nameOrdA").selected == true) {
         let nombreOrdenado = window.sortUsers(userStats, "name", "ASC")
         imprimirLista(nombreOrdenado);
     }
-    if (document.getElementById("aveord").selected == true) {
+    if (document.getElementById("nameOrdD").selected == true) {
+        let nombreOrdenado = window.sortUsers(userStats, "name", "DES")
+        imprimirLista(nombreOrdenado);
+    }
+    if (document.getElementById("aveOrdA").selected == true) {
         let avanceGral = window.sortUsers(userStats, "percent", "ASC")
         imprimirLista(avanceGral);
-    } else if (document.getElementById("btnejerCom").selected == true) {
+    }
+    if (document.getElementById("aveOrdD").selected == true) {
+        let avanceGral = window.sortUsers(userStats, "percent", "DES")
+        imprimirLista(avanceGral);
+    }
+    if (document.getElementById("exeComA").selected == true) {
         let ejerciciosOrdenados = window.sortUsers(userStats, "exercises percent", "ASC")
         imprimirLista(ejerciciosOrdenados);
-    } else if (document.getElementById("btnquizzes").selected == true) {
+    }
+    if (document.getElementById("exeComD").selected == true) {
+        let ejerciciosOrdenados = window.sortUsers(userStats, "exercises percent", "DES")
+        imprimirLista(ejerciciosOrdenados);
+    }
+    if (document.getElementById("quizAveA").selected == true) {
         let promPtosQuizzes = window.sortUsers(userStats, "quizzes scoreAvg", "ASC")
         imprimirLista(promPtosQuizzes);
     }
-    else if (document.getElementById("nameordDesc").selected == true) {
-
-        let nombreOrdenadoDesc = window.sortUsers(userStats, "name", "DESC")
-        imprimirLista(nombreOrdenadoDesc);
+    if (document.getElementById("quizAveD").selected == true) {
+        let promPtosQuizzes = window.sortUsers(userStats, "quizzes scoreAvg", "DES")
+        imprimirLista(promPtosQuizzes);
     }
 }
 
 
-/* ================================================ */
-// IMPRIMIENTO COHORTS  ==========================
-/* ================================================ */
 
-// document.addEventListener('DOMContentLoaded', (e) => {
-//   e.preventDefault();
-//   getListOfCohorts();
-// })
-// document.getElementById('selectCohorts').addEventListener('change', (e) => {
-//   e.preventDefault();
-//   getUsersOfCohort(document.getElementById('selectCohorts').value);
-//   });
-// document.getElementById('butonData').addEventListener("click", getInfoData);
-
-/*  ========================================================================*/
 
 

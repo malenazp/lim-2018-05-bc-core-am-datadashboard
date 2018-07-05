@@ -103,13 +103,37 @@ describe('data', () => {
     
     });
     
-    /* describe('filterUsers(users, filterBy)', () => {
+/*     describe('filterUsers(users, filterBy)', () => {
+      
       it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)',() => {
       });
-    });
+    }); */
     
     describe('processCohortData({ cohortData, orderBy, orderDirection, filterBy })', () => {
-      it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter');
+
+      const cohort = fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
+      const { users, progress } = fixtures;
+      let options = {
+        cohort: cohort,
+        cohortData: {
+          users: users,
+          progress: progress
+        },
+        orderBy: 'Name',
+        orderDirection: 'ASC',
+        search: ''
+      }
+  
+      it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter', () => {
+  
+        const processed = processCohortData(options);
+        assert.deepEqual(processed[0].name, 'adriana vizcarra paitán');
+        options.search = 'zarela';
+        assert.deepEqual(processCohortData(options)[0].name, 'Elizabeth Zarela');
+        options.orderBy = 'Name';
+        options.orderDirection = 'DES';
+        assert.deepEqual(processCohortData(options)[0].name, 'Elizabeth Zarela')
+      });
+  
     });
-     */
     });
