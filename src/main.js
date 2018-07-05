@@ -15,7 +15,7 @@ let btnGraphs = document.getElementById('view-graphs');
 
 
 //Evento click del boton ESTUDIANTES, CURSOS, GRAFICOS Y PRINCIPAL
-btnStudents.addEventListener('click', () => {   
+btnStudents.addEventListener('click', () => {
     prin.classList.replace('show', 'hide');
     volver.classList.replace('hide', 'show');
     stud.classList.replace('hide', 'show');
@@ -74,7 +74,6 @@ btnPrincipal.addEventListener('click', () => {
 /* ================================================ */
 /* ============== BOTONES DEL MENUUU ============== */
 /* ================================================ */
-// faltaaaaa
 
 let btnAbout = document.getElementById('newTab');
 let btnMision = document.getElementById('li-mision');
@@ -183,7 +182,7 @@ let cohortData = {};
 
 let cohortUsers = [];
 let userStats = [];
-let cohorts = {};
+let cohorts = [];
 let courses = [];
 let userByCohort = [];
 
@@ -216,10 +215,20 @@ let loadCohortsJson = fetch("../data/cohorts.json")
                     cohortData[cohort.id] = [];
                 } else cohortData[cohort.id] = Object.keys(cohort.coursesIndex);
                 // 
-              let nameOfCohort = document.createElement('option');
-              nameOfCohort.value = cohort.id;
-              nameOfCohort.innerText = cohort.id;
-              document.getElementById('selectCohorts').appendChild(nameOfCohort);
+                let nameOfCohort = document.createElement('option');
+                nameOfCohort.value = cohort.id;
+                nameOfCohort.innerText = cohort.id;
+
+            // ==============================================
+               let  cohortTresLeters = cohort.id;
+                let lim = document.getElementById('lim');
+               if (cohortTresLeters.slice(0,3)== lim){
+            
+               }
+            
+            
+            // =================================================
+                document.getElementById('selectCohorts').appendChild(nameOfCohort);
             })
         data.forEach(
             function (cohort) {
@@ -228,15 +237,6 @@ let loadCohortsJson = fetch("../data/cohorts.json")
         for (cohort of data) {
             cohorts[cohort.id] = {};
         }
-        // .then((responseCohorts) => {   ///////////////////////////////////////////////////
-          // data.forEach(cohort => {
-          //     let nameOfCohort = document.createElement('option');
-          //     nameOfCohort.value = cohort.id;
-          //     nameOfCohort.innerText = cohort.id;
-          //     document.getElementById('selectCohorts').appendChild(nameOfCohort);
-          // })
-          //////////////////////////////////////////////////////////////////////
-
     })
     .catch((err) => {
         // console.error(err);
@@ -249,7 +249,75 @@ Promise.all([loadUserJson, loadProgressJson, loadCohortsJson]).then((values) => 
 });
 
 
-//Busqueda
+// ===================================================
+// SELECCIONAR COHORTS Y FILTRAR SEGUN LO SELECCIONADO
+// ===================================================
+
+//  const sede5 = cohorts;
+//  for(let s of cohorts){
+//       console.log(s.slice(0,2)); 
+//  }
+//  console.log(cohorts);
+
+// console.log(sede5);
+//  for(let s of sede5){
+//     console.log(s.slice(0,2));
+//  }
+// console.log(sede5);
+
+
+// var cad = ["hola", "chau"];
+// for (let letra of cad) {
+//     console.log(letra.slice(0,2)); 
+// }
+
+
+//Función para agregar opciones a un <select>.
+function addOption(domElement, array1) {
+
+    let selector = document.getElementsByName(domElement)[0];
+    for (sede in cohorts) {
+        let opcion = document.createElement('select-sede2');
+        opcion.text = array[sede];
+        selector.add(opcion);
+    }
+}
+
+let loadCohortsSelected = document.getElementById('select-sede2');
+//Declaramos un array donde guardamos todos los elementos de 
+//tipo id=provincias o (select-sede2) e id=pueblos o (select-cohort2).
+loadCohortsSelected.addEventListener('click', () => {
+    let arrayCohorts = cohorts;
+    let selectSede2 = document.getElementById('select-sede2');
+    let selectCohort2 = document.getElementById('select-cohort2');
+    let select2tSelectedEnHtml = selectSede2.value;
+
+    //Se limpian los pueblos.
+    selectCohort2.innerHTML = '<option value="">Seleccione un Cohort...</option>'
+
+    //Si existe select2tSelectedEnHtml...
+    if (provinciaSeleccionada !== "") {
+        //Se seleccionan los Cohorts y se ordenan.
+        provinciaSeleccionada = listaPueblos[provinciaSeleccionada];
+        provinciaSeleccionada.sort();
+
+        //Insertamos los pueblos mediante un FOR.
+        provinciaSeleccionada.forEach(function (pueblo) {
+            var opcion = document.createElement('option');
+            opcion.value = pueblo;
+            opcion.text = pueblo;
+            pueblos.add(opcion);
+        });
+
+    };
+});   
+
+
+
+
+// =================================================== //
+//Busqueda   
+// =================================================== //
 let inputText = document.getElementById("InputSearch");
 inputText.addEventListener("keypress", (event) => {
     let key = event.which || event.keyCode;
