@@ -7,7 +7,6 @@
     <meta name="author" content="Malena Zuñiga - Grecia Gutierrez">
     <meta name="keywords" content="data dashboard, graficos estaditicos, alumnas de laboratoria, estudiantes de laboratoria, notas, examenes">
     <meta name="description" content="Este proyecto consiste en la manipulacion de datos extraidos de diferentes archivos JSON, con la finalidad de mostrar datos estadísticos relevantes para los Training Managers">
-
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="img/Laboratoria_CMYK_logo-11.png" type="image/x-icon">
     <title>Data Dashboard</title>
@@ -83,14 +82,13 @@
                     <p>
                         <b>Filtrar según las listas desplegables:</b>
                     </p>
-                    <select name="provincias" id="select-sede2">
-                      
-                        <option value="value2" id="lim" selected>Lima</option>
+                    <select>
+                        <option value="value2" id= "lim" selected>Lima</option>
                         <option value="value3" id="aqp">Arequipa</option>
-                        <option value="value4" id="cdm">MexicoDC</option>
+                        <option value="value4" id= "cdm">MexicoDC</option>
                         <option value="value5" id="gdl">Guadalajara</option>
                         <option value="value6" id="spl">SaoPaulo</option>
-                        <option value="value7"  id="scl">Santiago de Chile</option>
+                        <option value="value7" id="scl">Santiago de Chile</option>
                     </select>
 
                     <select name="pueblos" id="select-cohort2"></select>
@@ -161,15 +159,16 @@
                                                         </th>
                                                         <th>
                                                             <select onchange="seleccion()">
-                                                                <option>Ordenar los resultados</option>
-                                                                <option id="nameord">Ordenar por Nombre (abc)</option>
-                                                                <option id="aveord">Avance General % (ASC)</option>
-                                                                <option id="btnejerCom">Ejercicios completados (ASC)</option>
-                                                                <option id="btnquizzes">Puntuación promedio en quizzes (ASC)</option>
-                                                                <option id="nameordDesc">Ordenar por Nombre (DESC)</option>
-                                                                <option id="aveordDesc">Avance General % (DESC)</option>
-
-                                                            </select>
+                                                                <option >Ordenar los resultados</option>
+                                                                <option id="nameOrdA">Ordenar por Nombre (abc)</option>
+                                                                <option id="nameOrdD">Ordenar por Nombre (zyx)</option>  
+                                                                <option id="aveOrdA">Avance General % (ASC)</option> 
+                                                                <option id="aveOrdD">Avance General % (DES)</option> 
+                                                                <option id="exeComA">Ejercicios completados (ASC)</option>
+                                                                <option id="exeComD">Ejercicios completados (DES)</option>
+                                                                <option id="quizAveA">Puntuación promedio en quizzes (ASC)</option> 
+                                                                <option id="quizAveD">Puntuación promedio en quizzes (DES)</option> 
+                                                             </select>
                                                         </th>
                                                     </tr>
                                                     <tr>

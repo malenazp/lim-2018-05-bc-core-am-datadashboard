@@ -170,6 +170,19 @@ btnContactanos.addEventListener('click', () => {
     divContactanos.classList.replace('hide', 'show');
 });
 
+/* ==========Declarando parámetro options=============== */
+
+let options = {
+    cohort: null,
+    cohortData: {
+      users: null,
+      progress: null,
+  
+    },
+    orderBy: 'name',
+    orderDirection: 'ASC',
+    search: ''
+  }
 
 /* ================================================== */
 /* ====Creando variables y conectando con JSON  ===== */
@@ -248,78 +261,10 @@ Promise.all([loadUserJson, loadProgressJson, loadCohortsJson]).then((values) => 
     userStats = window.computeUsersStats(usersData, progressData, cohortData["lim-2018-03-pre-core-pw"])
 });
 
-
-// ===================================================
-// SELECCIONAR COHORTS Y FILTRAR SEGUN LO SELECCIONADO
-// ===================================================
-
-//  const sede5 = cohorts;
-//  for(let s of cohorts){
-//       console.log(s.slice(0,2)); 
-//  }
-//  console.log(cohorts);
-
-// console.log(sede5);
-//  for(let s of sede5){
-//     console.log(s.slice(0,2));
-//  }
-// console.log(sede5);
-
-
-// var cad = ["hola", "chau"];
-// for (let letra of cad) {
-//     console.log(letra.slice(0,2)); 
-// }
-
-
-//Función para agregar opciones a un <select>.
-function addOption(domElement, array1) {
-
-    let selector = document.getElementsByName(domElement)[0];
-    for (sede in cohorts) {
-        let opcion = document.createElement('select-sede2');
-        opcion.text = array[sede];
-        selector.add(opcion);
-    }
-}
-
-let loadCohortsSelected = document.getElementById('select-sede2');
-//Declaramos un array donde guardamos todos los elementos de 
-//tipo id=provincias o (select-sede2) e id=pueblos o (select-cohort2).
-loadCohortsSelected.addEventListener('click', () => {
-    let arrayCohorts = cohorts;
-    let selectSede2 = document.getElementById('select-sede2');
-    let selectCohort2 = document.getElementById('select-cohort2');
-    let select2tSelectedEnHtml = selectSede2.value;
-
-    //Se limpian los pueblos.
-    selectCohort2.innerHTML = '<option value="">Seleccione un Cohort...</option>'
-
-    //Si existe select2tSelectedEnHtml...
-    if (provinciaSeleccionada !== "") {
-        //Se seleccionan los Cohorts y se ordenan.
-        provinciaSeleccionada = listaPueblos[provinciaSeleccionada];
-        provinciaSeleccionada.sort();
-
-        //Insertamos los pueblos mediante un FOR.
-        provinciaSeleccionada.forEach(function (pueblo) {
-            var opcion = document.createElement('option');
-            opcion.value = pueblo;
-            opcion.text = pueblo;
-            pueblos.add(opcion);
-        });
-
-    };
-});   
-
-
-
-
-// =================================================== //
-//Busqueda   
-// =================================================== //
+//Busqueda
 let inputText = document.getElementById("InputSearch");
-inputText.addEventListener("keypress", (event) => {
+inputText.addEventListener("keyup", (event) => {
+    event.preventDefault()
     let key = event.which || event.keyCode;
     if (key === 13) {
         let name = inputText.value;
@@ -354,42 +299,41 @@ botonCohort.addEventListener("click", (event) => {
 
 //selección ASC y DEC
 function seleccion() {
-    if (document.getElementById("nameord").selected == true) {
+    if (document.getElementById("nameOrdA").selected == true) {
         let nombreOrdenado = window.sortUsers(userStats, "name", "ASC")
         imprimirLista(nombreOrdenado);
     }
-    if (document.getElementById("aveord").selected == true) {
+    if (document.getElementById("nameOrdD").selected == true) {
+        let nombreOrdenado = window.sortUsers(userStats, "name", "DES")
+        imprimirLista(nombreOrdenado);
+    }
+    if (document.getElementById("aveOrdA").selected == true) {
         let avanceGral = window.sortUsers(userStats, "percent", "ASC")
         imprimirLista(avanceGral);
-    } else if (document.getElementById("btnejerCom").selected == true) {
+    }
+    if (document.getElementById("aveOrdD").selected == true) {
+        let avanceGral = window.sortUsers(userStats, "percent", "DES")
+        imprimirLista(avanceGral);
+    }
+    if (document.getElementById("exeComA").selected == true) {
         let ejerciciosOrdenados = window.sortUsers(userStats, "exercises percent", "ASC")
         imprimirLista(ejerciciosOrdenados);
-    } else if (document.getElementById("btnquizzes").selected == true) {
+    }
+    if (document.getElementById("exeComD").selected == true) {
+        let ejerciciosOrdenados = window.sortUsers(userStats, "exercises percent", "DES")
+        imprimirLista(ejerciciosOrdenados);
+    }
+    if (document.getElementById("quizAveA").selected == true) {
         let promPtosQuizzes = window.sortUsers(userStats, "quizzes scoreAvg", "ASC")
         imprimirLista(promPtosQuizzes);
     }
-    else if (document.getElementById("nameordDesc").selected == true) {
-
-        let nombreOrdenadoDesc = window.sortUsers(userStats, "name", "DESC")
-        imprimirLista(nombreOrdenadoDesc);
+    if (document.getElementById("quizAveD").selected == true) {
+        let promPtosQuizzes = window.sortUsers(userStats, "quizzes scoreAvg", "DES")
+        imprimirLista(promPtosQuizzes);
     }
 }
 
 
-/* ================================================ */
-// IMPRIMIENTO COHORTS  ==========================
-/* ================================================ */
 
-// document.addEventListener('DOMContentLoaded', (e) => {
-//   e.preventDefault();
-//   getListOfCohorts();
-// })
-// document.getElementById('selectCohorts').addEventListener('change', (e) => {
-//   e.preventDefault();
-//   getUsersOfCohort(document.getElementById('selectCohorts').value);
-//   });
-// document.getElementById('butonData').addEventListener("click", getInfoData);
-
-/*  ========================================================================*/
 
 
