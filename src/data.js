@@ -2,11 +2,31 @@
 window.computeUsersStats = (users, progress, courses) => {
   let lista = users.map(
     (user) => {
-      try {
       if (Object.keys(progress[user.id]).length === 0) {
+        user.stats = {
+          percent: 0,
+          exercises: {
+            total: 0,
+            completed: 0,
+            percent: 0,
+          },
+          reads: {
+            total: 0,
+            completed: 0,
+            percent: 0,
+          },
+          quizzes: {
+            total: 0,
+            completed: 0,
+            percent: 0,
+            scoreSum: 0,
+            scoreAvg: 0,
+          }
+        };
         return user
       }
       user.stats = {
+
         percent: promedioCursos(progress[user.id], courses),
         exercises: {
           total: totalExcercises(progress[user.id], courses),
@@ -24,31 +44,12 @@ window.computeUsersStats = (users, progress, courses) => {
           percent: Math.ceil((completeQuizzes(progress[user.id], courses) / totalQuizzes(progress[user.id], courses)) * 100) || 0,
           scoreSum: scoreSum(progress[user.id], courses),
           scoreAvg: Math.ceil((scoreSum(progress[user.id], courses) / completeQuizzes(progress[user.id], courses))) || 0,
-        }};
+        }
+      };
       return user;
-    } catch (error) {
-      return user.stats = {
-        percent: 0,
-        exercises: {
-          total: 0,
-          completed: 0,
-          percent: 0,
-        },
-        reads: {
-          total: 0,
-          completed: 0,
-          percent: 0,
-        },
-        quizzes: {
-          total: 0,
-          completed: 0,
-          percent: 0,
-          scoreSum: 0,
-          scoreAvg: 0,
-        }}; 
-     }
     })
-    return lista.filter((user) => user.hasOwnProperty("stats"));
+  console.log(lista);
+  return lista.filter((user) => user.hasOwnProperty("stats"));
 }
 
 function promedioCursos(progress, courses) {
@@ -152,90 +153,90 @@ function scoreSum(progress, courses) {
 //2) sortUsers(users, orderBy, orderDirection)
 window.sortUsers = (users, orderBy, orderDirection) => {
   let compareNames = (user1, user2) => {
-      if (user1.name < user2.name) {
-          return -1;
-      }
-      if (user1.name > user2.name) {
-          return 1;
-      } else return 0;
+    if (user1.name < user2.name) {
+      return -1;
+    }
+    if (user1.name > user2.name) {
+      return 1;
+    } else return 0;
   }
   let compareNamesDesc = (user1, user2) => -compareNames(user1, user2);
 
   let comparePercent = (user1, user2) => {
-      if (user1.stats.percent < user2.stats.percent) {
-          return -1;
-      } else if (user1.stats.percent > user2.stats.percent) {
-          return 1;
-      } else return 0;
+    if (user1.stats.percent < user2.stats.percent) {
+      return -1;
+    } else if (user1.stats.percent > user2.stats.percent) {
+      return 1;
+    } else return 0;
   }
   let comparePercentDesc = (user1, user2) => -comparePercent(user1, user2);
 
   let compareExercisesPercent = (user1, user2) => {
-      if (user1.stats.exercises.percent < user2.stats.exercises.percent) {
-          return -1;
-      } else if (user1.stats.exercises.percent > user2.stats.exercises.percent) {
-          return 1;
-      } else return 0;
+    if (user1.stats.exercises.percent < user2.stats.exercises.percent) {
+      return -1;
+    } else if (user1.stats.exercises.percent > user2.stats.exercises.percent) {
+      return 1;
+    } else return 0;
   }
   let compareExercisesPercentDesc = (user1, user2) => -compareExercisesPercent(user1, user2);
 
   let compareQuizzesPercent = (user1, user2) => {
-      if (user1.stats.quizzes.percent < user2.stats.quizzes.percent) {
-          return -1;
-      } else if (user1.stats.quizzes.percent > user2.stats.quizzes.percent) {
-          return 1;
-      } else return 0;
+    if (user1.stats.quizzes.percent < user2.stats.quizzes.percent) {
+      return -1;
+    } else if (user1.stats.quizzes.percent > user2.stats.quizzes.percent) {
+      return 1;
+    } else return 0;
   }
   let compareQuizzesPercentDesc = (user1, user2) => -compareQuizzesPercent(user1, user2);
 
   let compareQuizzesScoreAvg = (user1, user2) => {
-      if (user1.stats.quizzes.scoreAvg < user2.stats.quizzes.scoreAvg) {
-          return -1;
-      } else if (user1.stats.quizzes.scoreAvg > user2.stats.quizzes.scoreAvg) {
-          return 1;
-      } else return 0;
+    if (user1.stats.quizzes.scoreAvg < user2.stats.quizzes.scoreAvg) {
+      return -1;
+    } else if (user1.stats.quizzes.scoreAvg > user2.stats.quizzes.scoreAvg) {
+      return 1;
+    } else return 0;
   }
   let compareQuizzesScoreAvgDesc = (user1, user2) => -compareQuizzesScoreAvg(user1, user2);
 
   let compareReadsPercent = (user1, user2) => {
-      if (user1.stats.reads.percent < user2.stats.reads.percent) {
-          return -1;
-      } else if (user1.stats.reads.percent > user2.stats.reads.percent) {
-          return 1;
-      } else return 0;
+    if (user1.stats.reads.percent < user2.stats.reads.percent) {
+      return -1;
+    } else if (user1.stats.reads.percent > user2.stats.reads.percent) {
+      return 1;
+    } else return 0;
   }
   let compareReadsPercentDesc = (user1, user2) => -compareReadsPercent(user1, user2);
 
 
   if (orderBy === "name") {
-      if (orderDirection === "ASC") {
-          users.sort(compareNames)
-      } else users.sort(compareNamesDesc)
+    if (orderDirection === "ASC") {
+      users.sort(compareNames)
+    } else users.sort(compareNamesDesc)
   }
   if (orderBy === "percent") {
-      if (orderDirection === "ASC") {
-          users.sort(comparePercent)
-      } else users.sort(comparePercentDesc)
+    if (orderDirection === "ASC") {
+      users.sort(comparePercent)
+    } else users.sort(comparePercentDesc)
   }
   if (orderBy === "exercises percent") {
-      if (orderDirection === "ASC") {
-          users.sort(compareExercisesPercent)
-      } else users.sort(compareExercisesPercentDesc)
+    if (orderDirection === "ASC") {
+      users.sort(compareExercisesPercent)
+    } else users.sort(compareExercisesPercentDesc)
   }
   if (orderBy === "quizzes percent") {
-      if (orderDirection === "ASC") {
-          users.sort(compareQuizzesPercent)
-      } else users.sort(compareQuizzesPercentDesc)
+    if (orderDirection === "ASC") {
+      users.sort(compareQuizzesPercent)
+    } else users.sort(compareQuizzesPercentDesc)
   }
   if (orderBy === "quizzes scoreAvg") {
-      if (orderDirection === "ASC") {
-          users.sort(compareQuizzesScoreAvg)
-      } else users.sort(compareQuizzesScoreAvgDesc)
+    if (orderDirection === "ASC") {
+      users.sort(compareQuizzesScoreAvg)
+    } else users.sort(compareQuizzesScoreAvgDesc)
   }
   if (orderBy === "reads percent") {
-      if (orderDirection === "ASC") {
-          users.sort(compareReadsPercent);
-      } else users.sort(compareReadsPercentDesc)
+    if (orderDirection === "ASC") {
+      users.sort(compareReadsPercent);
+    } else users.sort(compareReadsPercentDesc)
   }
 
   return users;
