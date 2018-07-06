@@ -190,14 +190,20 @@ let options = {
 
 // Raw Data
 let usersData = [];
-let progressData = {};
-let cohortData = {};
+let cohortData = {};  // objeto
+let progressData = {}
+let coursesData = []
 
 let cohortUsers = [];
 let userStats = [];
-let cohorts = [];
+let cohorts = {};
 let courses = [];
 let userByCohort = [];
+
+const usersFile = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+const progressFile = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
+const cohortsFile = '../data/cohorts.json';
+
 
 let loadUserJson = fetch("../data/cohorts/lim-2018-03-pre-core-pw/users.json")
     .then(response => response.json())
@@ -233,13 +239,10 @@ let loadCohortsJson = fetch("../data/cohorts.json")
                 nameOfCohort.innerText = cohort.id;
 
             // ==============================================
-               let  cohortTresLeters = cohort.id;
-                let lim = document.getElementById('lim');
-               if (cohortTresLeters.slice(0,3)== lim){
-            
-               }
-            
-            
+            //    let  cohortTresLeters = cohort.id;
+            //     let lim = document.getElementById('lim');
+            //    if (cohortTresLeters.slice(0,3)== lim){
+            //    }
             // =================================================
                 document.getElementById('selectCohorts').appendChild(nameOfCohort);
             })
@@ -263,7 +266,7 @@ Promise.all([loadUserJson, loadProgressJson, loadCohortsJson]).then((values) => 
 
 //Busqueda
 let inputText = document.getElementById("InputSearch");
-inputText.addEventListener("keyup", (event) => {
+inputText.addEventListener("keyup", (event) => {  
     event.preventDefault()
     let key = event.which || event.keyCode;
     if (key === 13) {
@@ -334,6 +337,51 @@ function seleccion() {
 }
 
 
+const cohortList = document.getElementById('cohortList');
+const buttonContainer = document.getElementById('button-container');
+
+
+// =============================================================
+// JALANDO DATOS DESDE JSON  ===================================
+fetch(usersFile).then(response => {
+  if (response.status === 200) {
+    return response.json();
+  } else {
+    // console.error(err);
+  }
+}).then(usersResponse => {
+  usersData = usersResponse;
+  return fetch(progressFile);
+}).then(response => {
+	if(response.status === 200) {
+		return response.json();
+	} else {
+		// console.error(err);
+	}
+}).then(progressResponse => {
+  progressData = progressResponse;
+	return fetch(cohortsFile);
+}).then(response => {
+	if(response.status === 200) {
+		return response.json();
+	} else { 
+		// console.error(err);
+	}
+}).then(cohortsResponse => {
+
+  // FILTRANDO  SEGUN SEDE SELECCIONADA =========================
+  buttonContainer.addEventListener('click', e => {
+    cohortList.innerHTML = '';
+    cohortsResponse.forEach(cohort => {
+      if(cohort.id.startsWith(e.target.value)) {
+        const option = document.createElement('option');
+        const textNodeOption = document.createTextNode(cohort.id);
+        option.appendChild(textNodeOption); 
+        cohortList.appendChild(option); 
+      }
+    });
+  });
+});
 
 
 
