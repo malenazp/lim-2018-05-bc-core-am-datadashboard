@@ -126,7 +126,7 @@ function totalQuizzes(progress, courses) {
   return Math.round(total);
 }
 
-function completeQuizzes (progress, courses) {
+function completeQuizzes(progress, courses) {
   let total = 0;
   courses.forEach(curso => {
     Object.values(progress[curso].units).forEach(unit => {
@@ -257,5 +257,3 @@ window.processCohortData = (options) => {
   }
   return students;
 }
-
-/////////////////////////////////////////////////////////////

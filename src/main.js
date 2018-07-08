@@ -15,7 +15,7 @@ let btnGraphs = document.getElementById('view-graphs');
 
 
 //Evento click del boton ESTUDIANTES, CURSOS, GRAFICOS Y PRINCIPAL
-btnStudents.addEventListener('click', () => {
+btnStudents.addEventListener('click', () => {   
     prin.classList.replace('show', 'hide');
     volver.classList.replace('hide', 'show');
     stud.classList.replace('hide', 'show');
@@ -74,6 +74,7 @@ btnPrincipal.addEventListener('click', () => {
 /* ================================================ */
 /* ============== BOTONES DEL MENUUU ============== */
 /* ================================================ */
+// faltaaaaa
 
 let btnAbout = document.getElementById('newTab');
 let btnMision = document.getElementById('li-mision');
@@ -190,20 +191,14 @@ let options = {
 
 // Raw Data
 let usersData = [];
-let cohortData = {};  // objeto
-let progressData = {}
-let coursesData = []
+let progressData = {};
+let cohortData = {};
 
 let cohortUsers = [];
 let userStats = [];
 let cohorts = {};
 let courses = [];
 let userByCohort = [];
-
-const usersFile = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
-const progressFile = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
-const cohortsFile = '../data/cohorts.json';
-
 
 let loadUserJson = fetch("../data/cohorts/lim-2018-03-pre-core-pw/users.json")
     .then(response => response.json())
@@ -234,17 +229,10 @@ let loadCohortsJson = fetch("../data/cohorts.json")
                     cohortData[cohort.id] = [];
                 } else cohortData[cohort.id] = Object.keys(cohort.coursesIndex);
                 // 
-                let nameOfCohort = document.createElement('option');
-                nameOfCohort.value = cohort.id;
-                nameOfCohort.innerText = cohort.id;
-
-            // ==============================================
-            //    let  cohortTresLeters = cohort.id;
-            //     let lim = document.getElementById('lim');
-            //    if (cohortTresLeters.slice(0,3)== lim){
-            //    }
-            // =================================================
-                document.getElementById('selectCohorts').appendChild(nameOfCohort);
+              let nameOfCohort = document.createElement('option');
+              nameOfCohort.value = cohort.id;
+              nameOfCohort.innerText = cohort.id;
+              document.getElementById('selectCohorts').appendChild(nameOfCohort);
             })
         data.forEach(
             function (cohort) {
@@ -253,6 +241,15 @@ let loadCohortsJson = fetch("../data/cohorts.json")
         for (cohort of data) {
             cohorts[cohort.id] = {};
         }
+        // .then((responseCohorts) => {   ///////////////////////////////////////////////////
+          // data.forEach(cohort => {
+          //     let nameOfCohort = document.createElement('option');
+          //     nameOfCohort.value = cohort.id;
+          //     nameOfCohort.innerText = cohort.id;
+          //     document.getElementById('selectCohorts').appendChild(nameOfCohort);
+          // })
+          //////////////////////////////////////////////////////////////////////
+
     })
     .catch((err) => {
         // console.error(err);
@@ -266,7 +263,7 @@ Promise.all([loadUserJson, loadProgressJson, loadCohortsJson]).then((values) => 
 
 //Busqueda
 let inputText = document.getElementById("InputSearch");
-inputText.addEventListener("keyup", (event) => {  
+inputText.addEventListener("keyup", (event) => {
     event.preventDefault()
     let key = event.which || event.keyCode;
     if (key === 13) {
@@ -335,53 +332,4 @@ function seleccion() {
         imprimirLista(promPtosQuizzes);
     }
 }
-
-
-const cohortList = document.getElementById('cohortList');
-const buttonContainer = document.getElementById('button-container');
-
-
-// =============================================================
-// JALANDO DATOS DESDE JSON  ===================================
-fetch(usersFile).then(response => {
-  if (response.status === 200) {
-    return response.json();
-  } else {
-    // console.error(err);
-  }
-}).then(usersResponse => {
-  usersData = usersResponse;
-  return fetch(progressFile);
-}).then(response => {
-	if(response.status === 200) {
-		return response.json();
-	} else {
-		// console.error(err);
-	}
-}).then(progressResponse => {
-  progressData = progressResponse;
-	return fetch(cohortsFile);
-}).then(response => {
-	if(response.status === 200) {
-		return response.json();
-	} else { 
-		// console.error(err);
-	}
-}).then(cohortsResponse => {
-
-  // FILTRANDO  SEGUN SEDE SELECCIONADA =========================
-  buttonContainer.addEventListener('click', e => {
-    cohortList.innerHTML = '';
-    cohortsResponse.forEach(cohort => {
-      if(cohort.id.startsWith(e.target.value)) {
-        const option = document.createElement('option');
-        const textNodeOption = document.createTextNode(cohort.id);
-        option.appendChild(textNodeOption); 
-        cohortList.appendChild(option); 
-      }
-    });
-  });
-});
-
-
 
