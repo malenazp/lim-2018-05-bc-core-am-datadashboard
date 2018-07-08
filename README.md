@@ -1,6 +1,6 @@
 # Data Dashboard
 
-# Visita proyecto: 
+## Visita el proyecto: 
 
 [Página del proyecto Data Dashboard - Laboratoria](https://malenazp.github.io/lim-2018-05-bc-core-am-datadashboard/src/)
 
