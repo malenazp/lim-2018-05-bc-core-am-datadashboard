@@ -2,17 +2,15 @@
 
 ## Visita el proyecto: 
 
-[Página del proyecto Data Dashboard - Laboratoria](https://malenazp.github.io/lim-2018-05-bc-core-am-datadashboard/src/)
+[Hacer clic, para ingresar al Proyecto Data Dashboard - Laboratoria](https://malenazp.github.io/lim-2018-05-bc-core-am-datadashboard/src/)
 
-Para hacer login en el proyecto usar:
+Para hacer login en el proyecto: deberás logearte con un usuario y contraseña.
+Podrás utilizar el User: `alejandra@laboratoria.la`  y Password: `alejandra@laboratoria.la` ; además de manera opcional, tambien podrás logearte con el User: `123` y Password: `123`
 
-User: 123
-Password: 123
 
-ó
+** Pasos para utilizar la Página web Datadashboard - Laboratoria: <br>
 
-User: alejandra@laboratoria.la
-Password: alejandra@laboratoria.la
+<img src="src/img/gif/demofinal1.gif" alt="Drawing" style="width: 500px;"/>
 
 ## Antecedentes y Alcance del problema:
 
@@ -165,9 +163,9 @@ La interfaz presentada cumple con los requerimientos minimos de visual desing.
 
 ## Test Unitarios:
 
-![Resultado del Test](src/img/test/test1.png)
+<img src="src/img/test/test1.png" alt="test1" style="width: 500px;"/>
 <br>
-![Resultado del Test](src/img/test/test2.jpg)
+<img src="src/img/test/test2.jpg" alt="test2" style="width: 500px;"/>
 
 
 ## Habilidades blandas
