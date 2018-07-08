@@ -1,10 +1,16 @@
 # Data Dashboard
 
-#Página: [Proyecto data dashboard](https://malenazp.github.io/lim-2018-05-bc-core-am-datadashboard/src/)
+#Página: 
+
+[Proyecto Data Dashboard - Laboratoria](https://malenazp.github.io/lim-2018-05-bc-core-am-datadashboard/src/)
+
 Para hacer login en el proyecto usar:
+
 User: 123
 Password: 123
+
 ó
+
 User: alejandra@laboratoria.la
 Password: alejandra@laboratoria.la
 
