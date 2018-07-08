@@ -257,5 +257,3 @@ window.processCohortData = (options) => {
   }
   return students;
 }
-
-/////////////////////////////////////////////////////////////
