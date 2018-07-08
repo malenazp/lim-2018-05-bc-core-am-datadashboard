@@ -1,5 +1,13 @@
 # Data Dashboard
 
+#Página: [Proyecto data dashboard](https://malenazp.github.io/lim-2018-05-bc-core-am-datadashboard/src/)
+Para hacer login en el proyecto usar:
+User: 123
+Password: 123
+ó
+User: alejandra@laboratoria.la
+Password: alejandra@laboratoria.la
+
 ## Antecedentes y Alcance del problema:
 
 Año tras año el equipo de Laboratoria registra mediante su página web a miles de estudiantes, quienes desean insertarse en el mundo del código. Despues de una serie de etapas, Laboratoria selecciona a las candidatas participantes del bootcamp de 6 meses. 
