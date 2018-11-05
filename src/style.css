@@ -15,27 +15,18 @@ body {
 }
 
 
-/* body{
-    background:#FFE521; 
-} */
-
-header
-{
+header{
 width: 90%;
 height: auto;
 background-color:#ffffff;
 margin:auto;
 border: #000000 1px solid;
-/* display: inline; */
 } 
 
 .img-volver{
   margin: auto;
   width: 35%;
   height: auto;
-  /* border: solid 3px black; */
-  /* text-align: right; */
-  /* size: 30% */
 }
 
 #imgLogo{
@@ -52,33 +43,28 @@ border: #000000 1px solid;
   }
 
 
-main
-{
+main{
 width: 90%;
-height: 2500px;
-/* height: auto; */
+height: 500px;
 background-color:#FFE521;
 margin:auto;
 position: relative;
 border: #000000 1px solid;
 }   
 
-form
-{
+form{
 width:95%;
-margin: auto;  /* para centrar el formulario */    
+margin: auto;      
 background: #FFE521; 
 padding: 10px 20px;  
 box-sizing: border-box;    
 margin-top: 20px;
-border-radius: 7px;  /* ESQUINAS REDONDAS */
+border-radius: 7px; 
 }
 
-nav
-{
+nav{
 width: 20%;
-height: 2500px;
-/* height: auto; */
+height: auto;
 background-color:#FFE521;
 position: absolute;
 border: #000000 1px solid;
@@ -103,17 +89,14 @@ border: black 2px;
 } 
 
 
-
-
-
-.input-botones
-{
+.input-botones{
 width: 100%;
 margin-bottom: 10px;
 padding: 7px;
 box-sizing: border-box;
 font-size: 12px;
-border: none;    
+border-radius: 9px;   
+cursor: pointer 
 }
 
 .radiobuton {
@@ -127,15 +110,12 @@ font-size: 17px;
 border: none;
 }
 
- aside#izquierda
-{
- 
+ aside#izquierda{
 width: 80%;  
 height: auto;
 background-color:beige;
 float:right;
 text-align: center;
-/* border: #000000 3px solid; */
 }
 
 
@@ -145,18 +125,16 @@ text-align: center;
   height: auto;
   border: solid 3px black;
   text-align: right;
-  /* size: 30% */
 }
 
 .img-graficos{
   margin: auto;
-  width: 700px;
+  width: 100%;
   height: auto;
   border: solid 3px black;
 }
-footer
-{
- width: 90%;
+footer{
+width: 90%;
 height: auto;
 background-color: #ffffff;
 margin: auto;
@@ -189,7 +167,7 @@ p{
 
 .place {
   border-radius: 10px;
-  font-size: 200%;
+  font-size: 100%;
   list-style-type: none;
   text-align: center;
   padding-top: 5%;
@@ -198,6 +176,7 @@ p{
 .place:hover {
   background-color:rgb(51, 47, 16);
   color: rgb(255, 255, 255) ;
+  cursor: pointer;
 }
 
 /*/////////////////////////////////////////////////////////*/
