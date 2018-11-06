@@ -27,7 +27,7 @@ Es apartir de esta necesidad que se decide implementar una plataforma web llamad
 
 Un dashboard debe ayudarnos a identificar el origen de ese dato positivo o negativo que hemos detectado, que nos permita tomar una decisión al respecto, el análisis en detalle de los ‘porqués’ se debe hacer en un informe en concreto o en otra herramienta diseñada para ello. [importancia del Dashoboard](http://www.backbonetechnology.com.co/cultura-co/digital-section-co/la-importancia-de-un-dashboard-digital),
 
-En la actualidad muchas instituciones públicas y privadas utilizan los dashboards para la mejor toma de decisiones, por ejemplo:
+En la actualidad muchas instituciones públicas y privadas utilizan los dashboards para la mejor toma de decisiones, por ejemplo :
 
 * [En la INEI](http://subirimagen.me/uploads/20180701024416.PNG).
 los  datos estadísticos muestran informacion nacional de gran importancia. En base a estos datos obtenidos, las autoridades toman decisiones para mejorar en un tema determinado.
