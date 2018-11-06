@@ -27,6 +27,7 @@ border: #000000 1px solid;
   margin: auto;
   width: 35%;
   height: auto;
+  cursor: pointer;
 }
 
 #imgLogo{
@@ -45,11 +46,13 @@ border: #000000 1px solid;
 
 main{
 width: 90%;
-height: 500px;
+height: auto;
 background-color:#FFE521;
 margin:auto;
 position: relative;
 border: #000000 1px solid;
+display: flex;
+align-items: stretch;
 }   
 
 form{
@@ -66,7 +69,7 @@ nav{
 width: 20%;
 height: auto;
 background-color:#FFE521;
-position: absolute;
+/* position: absolute; */
 border: #000000 1px solid;
 }
 
@@ -114,7 +117,7 @@ border: none;
 width: 80%;  
 height: auto;
 background-color:beige;
-float:right;
+/* float:right; */
 text-align: center;
 }
 
@@ -172,6 +175,7 @@ p{
   text-align: center;
   padding-top: 5%;
   padding-bottom: 5%;
+  cursor: pointer;
 }
 .place:hover {
   background-color:rgb(51, 47, 16);
