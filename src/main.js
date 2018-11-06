@@ -232,7 +232,7 @@ let loadCohortsJson = fetch("../data/cohorts.json")
               let nameOfCohort = document.createElement('option');
               nameOfCohort.value = cohort.id;
               nameOfCohort.innerText = cohort.id;
-              document.getElementById('selectCohorts').appendChild(nameOfCohort);
+            //   document.getElementById('selectCohorts').appendChild(nameOfCohort);
             })
         data.forEach(
             function (cohort) {
